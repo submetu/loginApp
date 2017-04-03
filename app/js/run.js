@@ -11,6 +11,7 @@
 				event.preventDefault();
 			}
 			else if (toState.sign && Authentication.isLoggedIn()) {
+				$state.go(fromState.name);
 				event.preventDefault();
 			}
 		});

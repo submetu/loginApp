@@ -22,8 +22,9 @@ app.use(express.static(path.join(__dirname,'/../public')));
 require('./database');
 
 //Middleware
-app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParser.json());
+
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
@@ -34,7 +35,6 @@ app.use('/',router);
 
 //Initializing passport just before the api routes
 app.use(passport.initialize());
-
 //APIs
 app.use('/api/products',require('./api').productsApi);
 app.use('/api/users',require('./api').usersApi)
@@ -45,11 +45,8 @@ app.use(function (req,res,next) {
 	next(error);
 });
 app.use(function (err,req,res,next) {
-	if(err){
-		return res.redirect('/#/');
-	}
-	return res.status(500).send({
-		message: 'This is the last stage error!'
+	return res.status(err.status || 500).send({
+		message: err.message || 'This is an error!'
 	});
 });
 

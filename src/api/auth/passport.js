@@ -1,13 +1,31 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var Users = require('../../models/users');
+var errors = require('../../error');
 
 passport.use(new LocalStrategy(
 	function (username, password, done) {
+		if(!username || !password){
+			var error = errors.custom(422,'Data incomplete');
+			return done(error);
+		}
+		
 		Users.findOne({username: username}, function (err, user) {
+			if (err) {
+				return done(err);
+			}
+			if(!user){
+				return done(null, false, {
+					message: 'User not found!'
+				});
+			}
+			if(!user.username || !user.password){
+				var error = errors.custom(422,'Data incomplete');
+				return done(error);
+			}
 			user.validPassword(password,user.password,function(error,isMatch){
-				if (err || error) {
-					return done(err || error);
+				if (error) {
+					return done(error);
 				}
 				// Return if user not found in database
 				if (!user) {

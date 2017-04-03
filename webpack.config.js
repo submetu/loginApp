@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
 	// context: './app',
 	entry: {
@@ -7,7 +9,13 @@ module.exports = {
 		path: __dirname + '/public/dist/js',
 		filename: "[name].bundle.js"
 	}
-	
+	, plugins: [
+		new webpack.ProvidePlugin({
+			jQuery: 'jquery',
+			$: 'jquery',
+			jquery: 'jquery'
+		})
+	]
 	
 	// ,
 	// module: {
