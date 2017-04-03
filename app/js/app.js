@@ -7,3 +7,4 @@ angular.module('app',[uiRouter]);
 require('./config.js');
 require('./home');
 require('./users');
+require('./common');

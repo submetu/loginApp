@@ -30,6 +30,7 @@ var usersSchema = new mongoose.Schema({
 });
 //Call the unique validator to avoid duplicate users
 usersSchema.plugin(uniqueValidator);
+
 //hash passwords before saving to the database
 usersSchema.pre('save', function (next) {
 	var user = this;
@@ -41,6 +42,7 @@ usersSchema.pre('save', function (next) {
 		next();
 	});
 });
+
 //A helper method accessible for checking for a valid password
 usersSchema.methods.validPassword = function (password, hash, cb) {
 	bcrypt.compare(password, hash, function(err, isMatch) {
@@ -50,6 +52,7 @@ usersSchema.methods.validPassword = function (password, hash, cb) {
 		cb(null,isMatch);
 	});
 }
+
 //A helper method accessible for generating a JWT
 usersSchema.methods.generateJwt = function() {
 	var expiry = new Date();
@@ -57,6 +60,7 @@ usersSchema.methods.generateJwt = function() {
 	
 	return jwt.sign({
 		_id: this._id,
+		username: this.username,
 		email: this.email,
 		name: this.name,
 		exp: parseInt(expiry.getTime() / 1000),

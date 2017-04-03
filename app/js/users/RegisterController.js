@@ -1,7 +1,9 @@
-angular.module('app')
-	.controller('RegisterCtrl',['$scope','$http',function ($scope,$http) {
-		$scope.user = {}
-		//Test
+(function () {
+	angular.module('app')
+		.controller('RegisterCtrl',['$scope','$http',registerFunc]);
+	
+	function registerFunc ($scope,$http) {
+		$scope.user = {};
 		
 		$scope.register = function(){
 			$http.post('/api/users/register',JSON.stringify($scope.user)).then(function(){
@@ -9,4 +11,5 @@ angular.module('app')
 			});
 		};
 		
-	}]);
+	}
+}())
