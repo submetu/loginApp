@@ -7,6 +7,7 @@
 		this.login = function () {
 			Authentication.login(JSON.stringify(this.user)).then(function () {
 				console.log('You have successfully logged in');
+				$state.go('profile');
 			}, function (err) {
 				console.log(err);
 				$state.go('login');

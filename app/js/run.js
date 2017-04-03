@@ -10,6 +10,9 @@
 				$state.go("login");
 				event.preventDefault();
 			}
+			else if (toState.sign && Authentication.isLoggedIn()) {
+				event.preventDefault();
+			}
 		});
 	};
 	
