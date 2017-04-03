@@ -17,6 +17,8 @@ module.exports =  function (req, res, next) {
 				return next(userError);
 			}
 			var token = user.generateJwt();
+			
+			//Todo: Remove user property in the future
 			return res.json({
 				user: user,
 				token: token

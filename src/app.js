@@ -45,8 +45,11 @@ app.use(function (req,res,next) {
 	next(error);
 });
 app.use(function (err,req,res,next) {
-	return res.status(err.status || 500).send({
-		message: err.message || 'This is an error!'
+	if(err){
+		return res.redirect('/#/');
+	}
+	return res.status(500).send({
+		message: 'This is the last stage error!'
 	});
 });
 

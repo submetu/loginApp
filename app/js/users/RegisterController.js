@@ -1,14 +1,22 @@
 (function () {
 	angular.module('app')
-		.controller('RegisterCtrl',['$scope','$http',registerFunc]);
+		.controller('RegisterCtrl', ['$state', 'Authentication', registerFunc]);
 	
-	function registerFunc ($scope,$http) {
-		$scope.user = {};
+	function registerFunc($state, Authentication) {
+		this.user = {};
 		
-		$scope.register = function(){
-			$http.post('/api/users/register',JSON.stringify($scope.user)).then(function(){
-				console.log('success');
+		this.register = function () {
+			
+			Authentication.register(JSON.stringify(this.user)).then(function () {
+				console.log('You have successfully registered');
+			}, function (err) {
+				console.log(err);
+				$state.go('register')
 			});
+			// $http.post('/api/users/register',JSON.stringify($scope.user)).then(function(){
+			// 	console.log('success');
+			//
+			// });
 		};
 		
 	}

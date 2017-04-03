@@ -1,4 +1,4 @@
 angular.module('app')
-	.controller('HomeCtrl',['$scope',function ($scope) {
-		$scope.jani = 'JEE OYE KASHI';
+	.controller('HomeCtrl',[function () {
+		this.jani = 'KASHI';
 	}]);

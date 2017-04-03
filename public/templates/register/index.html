@@ -1,8 +1,8 @@
 <h1>This is the Register page</h1>
 <form >
-    <input ng-model="user.name" id="name" type="text" placeholder="name">
-    <input ng-model="user.username" id="username" type="text" placeholder="username">
-    <input ng-model="user.email" id="email" type="email" placeholder="email">
-    <input ng-model="user.password" type="password" id="password" placeholder="password">
-    <button ng-click="register()" type="submit" id="register_submit">Submit</button>
+    <input ng-model="vm.user.name" id="name" type="text" placeholder="name">
+    <input ng-model="vm.user.username" id="username" type="text" placeholder="username">
+    <input ng-model="vm.user.email" id="email" type="email" placeholder="email">
+    <input ng-model="vm.user.password" type="password" id="password" placeholder="password">
+    <button ng-click="vm.register()" type="submit" id="register_submit">Submit</button>
 </form>

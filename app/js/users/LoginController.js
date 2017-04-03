@@ -1,14 +1,17 @@
 (function () {
 	angular.module('app')
-		.controller('LoginCtrl', ['$scope', '$http', '$window', loginFunc]);
+		.controller('LoginCtrl', ['$state', 'Authentication', loginFunc]);
 	
-	function loginFunc($scope, $http, $window) {
-		$scope.user = {};
-		// $window.localStorage('auth', 'kashi');
-		$scope.login = function () {
-			$http.post('/api/users/login', JSON.stringify($scope.user)).then(function () {
-				console.log('success in logging in');
+	function loginFunc($state, Authentication) {
+		this.user = {};
+		this.login = function () {
+			Authentication.login(JSON.stringify(this.user)).then(function () {
+				console.log('You have successfully logged in');
+			}, function (err) {
+				console.log(err);
+				$state.go('login');
 			});
+			
 		};
 	}
 }())
