@@ -1,6 +1,6 @@
 (function () {
 	angular
-		.module('app')
+		.module('app.services')
 		.service('Authentication', ['$http','$window', AuthenticationFunc]);
 	
 	function AuthenticationFunc($http, $window) {

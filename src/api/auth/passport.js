@@ -23,6 +23,11 @@ passport.use(new LocalStrategy(
 				var error = errors.custom(422,'Data incomplete');
 				return done(error);
 			}
+			
+			/**
+			 * @param password: password that user provides
+			 * @param user.password: password that is already saved in the database as a hash
+			 */
 			user.validPassword(password,user.password,function(error,isMatch){
 				if (error) {
 					return done(error);

@@ -1,6 +1,8 @@
 var router = require('express').Router();
 var apiAuth = require('../auth/apiAuth');
 
+/****** PREFIX: /users ******/
+
 //For testing
 router.get('/', require('./users'));
 

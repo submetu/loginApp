@@ -18,7 +18,7 @@ module.exports =  function (req, res, next) {
 		// If a user is found
 		if (user) {
 			var token = user.generateJwt();
-			//Todo: Remove user property in the guture
+			//Todo: Remove user property in the future
 			res.json({
 				user: user,
 				token: token

@@ -9,14 +9,12 @@
 			
 			Authentication.register(JSON.stringify(this.user)).then(function () {
 				console.log('You have successfully registered');
+				$state.go('profile');
 			}, function (err) {
 				console.log(err);
 				$state.go('register')
 			});
-			// $http.post('/api/users/register',JSON.stringify($scope.user)).then(function(){
-			// 	console.log('success');
-			//
-			// });
+			
 		};
 		
 	}

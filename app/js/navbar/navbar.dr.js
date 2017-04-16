@@ -6,7 +6,9 @@
 	function navbarFunc() {
 		return{
 			restrict: 'E',
-			templateUrl: '../../../public/templates/navbar/index.html',
+			templateUrl: '/templates/navbar/index.html',
+			controller: 'NavbarCtrl',
+			controllerAs: 'vm',
 			link:  function(scope, element, attrs){
 				
 			}

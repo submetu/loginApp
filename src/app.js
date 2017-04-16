@@ -35,6 +35,7 @@ app.use('/',router);
 
 //Initializing passport just before the api routes
 app.use(passport.initialize());
+
 //APIs
 app.use('/api/products',require('./api').productsApi);
 app.use('/api/users',require('./api').usersApi)
